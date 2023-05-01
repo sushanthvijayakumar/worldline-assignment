@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block content %}
+<h1 class="text-center fw-bold">Get Student Record</h1>
+
+<div class="row d-flex text-center">
+  <div class="col-md-4 offset-md-4">
+    <form action="" method="get">
+      {{ filter.form.as_p }}
+      <input class="btn btn-info" type="submit" value="Search" />
+    </form>
+    <br /><br />
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Register Number</th>
+          <th scope="col">Name</th>
+          <th scope="col">Vaccination Status</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for obj in filter.qs %}
+        <tr>
+          <th scope="row">{{obj.reg_no}}</th>
+          <td>{{ obj.name }}</td>
+          <td>{{obj.vaccine_status }}</td>
+          <td>
+            <a
+              class="btn btn-sm btn-danger"
+              href="{% url 'record_delete' obj.pk %}"
+              >X</a
+            >
+          </td>
+          <td>
+            <a
+              class="btn btn-sm btn-warning"
+              href="{% url 'record_update' obj.pk %}"
+              >&#x21bb;</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock content %}

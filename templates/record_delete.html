@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block content %}
+<h1 class="text-center fw-bold">Delete student record</h1>
+<div class="row d-flex text-center">
+  <div class="col-md-4 offset-md-4">
+    <div class="card">
+      <div class="card-body">
+        <form action="" method="post" class="form-control">
+          {% csrf_token %}
+          <p class="card-title">Are you sure you want to delete?</p>
+          <a class="btn btn-secondary" href="{% url 'home' %}">Cancel</a>
+          <input class="btn btn-danger" type="submit" value="Confirm" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content%}
